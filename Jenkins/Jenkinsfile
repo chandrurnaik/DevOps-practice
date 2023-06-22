@@ -2,6 +2,9 @@ pipeline {
     agent {
        label 'slave1'
     } 
+    environment {
+       FIRST_NAME = "chandru"
+    }
     stages {
         stage ('BUILD') {
             steps {
