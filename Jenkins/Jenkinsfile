@@ -10,7 +10,7 @@ pipeline {
         }
         stage ('TEST') {
             steps {
-                sh 'exit 1'
+                sh 'sleep 3'
             }
         }
         stage ('DEPLOY') {
