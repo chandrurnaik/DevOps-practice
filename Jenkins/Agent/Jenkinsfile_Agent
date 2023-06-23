@@ -16,9 +16,7 @@ pipeline {
             }
         }
         stage ('TEST') {
-            agent {
-                label 'slave1'
-            }
+            agent any
             steps {
                 script {
                     env.BUILD_NAME = "deploy"
