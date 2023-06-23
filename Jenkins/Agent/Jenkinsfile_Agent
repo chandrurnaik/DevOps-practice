@@ -14,12 +14,19 @@ pipeline {
         }
         stage ('TEST') {
             steps {
-                sh 'sleep 3'
+                script {
+                    echo "updating env"
+                    env.FIRST_NAME="chandru_r_naik"
+                    sh 'sleep 3'
+                }
             }
         }
         stage ('DEPLOY') {
             steps {
-               sh 'sleep 2' 
+                script {
+                    echo "${env.FIRST_NAME}"
+                    sh 'sleep 2'
+                } 
             }
         }
     }
