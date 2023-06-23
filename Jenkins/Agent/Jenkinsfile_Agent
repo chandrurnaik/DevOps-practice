@@ -1,14 +1,15 @@
 pipeline {
-    agent {
-       label 'slave1'
-    } 
+    agent any
     environment {
        FIRST_NAME = "chandru"
     }
     stages {ś
         stage ('BUILD') {
             steps {
-                sh 'sleep 2'
+                script {
+                    echo "${env.FIRST_NAME}"
+                    sh 'sleep 2'
+                }
             }
         }
         stage ('TEST') {
