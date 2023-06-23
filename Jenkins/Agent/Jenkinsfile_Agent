@@ -1,32 +1,30 @@
 pipeline {
-    agent any
     environment {
-       FIRST_NAME = "chandru"
+        BUILD_NAME = "test"
     }
     stages {
         stage ('BUILD') {
             steps {
                 script {
-                    echo "${env.FIRST_NAME}"
-                    sh 'sleep 2'
+                    echo "${env.BUILD_NAME} environment"
+                    sh 'sleep 1'
                 }
             }
         }
         stage ('TEST') {
             steps {
                 script {
-                    echo "updating env"
-                    env.FIRST_NAME="chandru_r_naik"
-                    sh 'sleep 3'
+                    env.BUILD_NAME = "deploy"
+                    sh 'sleep 1'
                 }
             }
         }
         stage ('DEPLOY') {
             steps {
                 script {
-                    echo "${env.FIRST_NAME}"
-                    sh 'sleep 2'
-                } 
+                    echo "${env.BUILD_NAME}" 
+                    sh 'sleep 1'
+                }
             }
         }
     }
