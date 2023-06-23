@@ -3,7 +3,7 @@ pipeline {
     environment {
        FIRST_NAME = "chandru"
     }
-    stages {ś
+    stages {
         stage ('BUILD') {
             steps {
                 script {
