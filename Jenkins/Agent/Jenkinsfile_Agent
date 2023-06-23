@@ -1,10 +1,13 @@
 pipeline {
-    agent any
+    agent none
     environment {
         BUILD_NAME = "test"
     }
     stages {
         stage ('BUILD') {
+            agent {
+                label 'master'
+            }
             steps {
                 script {
                     echo "${env.BUILD_NAME} environment"
@@ -13,6 +16,9 @@ pipeline {
             }
         }
         stage ('TEST') {
+            agent {
+                label 'slave1'
+            }
             steps {
                 script {
                     env.BUILD_NAME = "deploy"
@@ -21,6 +27,9 @@ pipeline {
             }
         }
         stage ('DEPLOY') {
+            agent {
+                label 'slave2'
+            }
             steps {
                 script {
                     echo "${env.BUILD_NAME}" 
