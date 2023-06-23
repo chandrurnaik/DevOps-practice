@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     if (stageResult == true) {
-                        echo Stage 1 is success so executing stage 2
+                        echo "Stage 1 is success so executing stage 2"
                         env.BUILD_NAME = "deploy"
                         sh 'sleep 1'
                     } 
@@ -41,7 +41,7 @@ pipeline {
             steps {
                 script {
                     if (stageResult == false) {
-                        echo stage 1 is failed so executing stage 3
+                        echo "stage 1 is failed so executing stage 3"
                         echo "${env.BUILD_NAME}" 
                         sh 'sleep 1'
                     }
