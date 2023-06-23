@@ -1,3 +1,4 @@
+boolean stageResult = true
 pipeline {
     agent none
     environment {
@@ -10,8 +11,12 @@ pipeline {
             }
             steps {
                 script {
-                    echo "${env.BUILD_NAME} environment"
-                    sh 'sleep 1'
+                    try {
+                        echo "${env.BUILD_NAME} environment"
+                        sh 'sleep 1'
+                    } catch (Exception e) {
+                        stageResult = false
+                    }
                 }
             }
         }
@@ -19,8 +24,11 @@ pipeline {
             agent any
             steps {
                 script {
-                    env.BUILD_NAME = "deploy"
-                    sh 'sleep 1'
+                    if (stageResult == true) {
+                        echo Stage 1 is success so executing stage 2
+                        env.BUILD_NAME = "deploy"
+                        sh 'sleep 1'
+                    } 
                 }
             }
         }
@@ -30,8 +38,11 @@ pipeline {
             }
             steps {
                 script {
-                    echo "${env.BUILD_NAME}" 
-                    sh 'sleep 1'
+                    if (stageResult == false) {
+                        echo stage 1 is failed so executing stage 3
+                        echo "${env.BUILD_NAME}" 
+                        sh 'sleep 1'
+                    }
                 }
             }
         }
