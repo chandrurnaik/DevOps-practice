@@ -21,7 +21,9 @@ pipeline {
             }
         }
         stage ('TEST') {
-            agent any
+            agent {
+                label 'slave1'
+            }
             steps {
                 script {
                     if (stageResult == true) {
