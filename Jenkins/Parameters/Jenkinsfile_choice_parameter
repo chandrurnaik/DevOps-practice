@@ -1,0 +1,50 @@
+pipeline {
+    agent any 
+    parameters {
+        choice choices: ['build', 'test', 'qa', 'prod'], description: 'Choose your environment', name: 'DEPLOY'
+    }
+    stages {
+        stage ('BUILD') {
+            steps {
+                script {
+                    try {
+                        echo "This is Build Stage"
+                        echo "$DEPLOY"
+                        sh 'ls -lrt'
+                    } catch(Exception e) {
+                        if ("$DEPLOY" == "qa") {
+                            echo "Deploy is qa"
+                        } 
+                        else if ("$DEPLOY" == "test") {
+                            echo "Deploy is Test"
+                        }
+                    }
+                }
+            }
+        }
+        stage ('TEST') {
+            steps {
+                script {
+                    echo "This is Test Stage"
+                    sh 'ls -lrt'
+                }
+            }
+        }
+        stage ('QA') {
+            steps {
+                script {
+                    echo "This is QA Stage"
+                    sh 'whoami'
+                }
+            }
+        }
+        stage ('PROD') {
+            steps {
+                script {
+                    echo "This is Prod Stage"
+                    sh 'pwd'
+                }
+            }
+        }
+    }
+}
