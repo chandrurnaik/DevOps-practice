@@ -10,7 +10,10 @@ pipeline {
                     try {
                         echo "This is Build Stage"
                         echo "$DEPLOY"
-                        sh 'ls -lrt'
+                        sh '''
+                        ls -lrt
+                        exit 1
+                        '''
                     } catch(Exception e) {
                         if ("$DEPLOY" == "qa") {
                             echo "Deploy is qa"
