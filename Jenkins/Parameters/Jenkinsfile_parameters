@@ -1,0 +1,37 @@
+pipeline {
+    agent any 
+    stages {
+        stage ('BUILD') {
+            steps {
+                script {
+                    echo "This is Build Stage"
+                    sh 'ls -lrt'
+                }
+            }
+        }
+        stage ('TEST') {
+            steps {
+                script {
+                    echo "This is Test Stage"
+                    sh 'ls -lrt'
+                }
+            }
+        }
+        stage ('QA') {
+            steps {
+                script {
+                    echo "This is QA Stage"
+                    sh 'whoami'
+                }
+            }
+        }
+        stage ('PROD') {
+            steps {
+                script {
+                    echo "This is Prod Stage"
+                    sh 'pwd'
+                }
+            }
+        }
+    }
+}
