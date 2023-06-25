@@ -1,0 +1,34 @@
+pipeline {
+    agent any 
+    stages {
+        stage ("BUILD") {
+            steps {
+                echo "First Stage Build"
+            }
+        }
+        stage ("PARALLEL_STAGE") {
+            parallel {
+                stage ("TEST_1") {
+                    steps {
+                        echo "stage test1"
+                    }
+                }
+                stage ("TEST_2") {
+                    steps {
+                        echo "stage test2"
+                    }
+                }
+                stage ("TEST_3") {
+                    steps {
+                        echo "stage test3"
+                    }
+                }
+            }
+        }
+        stage ("PROD") {
+            steps {
+                echo "Executing Stage Production"
+            }
+        }
+    }
+}
