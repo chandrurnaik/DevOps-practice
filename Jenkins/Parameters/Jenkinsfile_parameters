@@ -5,6 +5,7 @@ pipeline {
             steps {
                 script {
                     echo "This is Build Stage"
+                    echo "$DEPLOY"
                     sh 'ls -lrt'
                 }
             }
