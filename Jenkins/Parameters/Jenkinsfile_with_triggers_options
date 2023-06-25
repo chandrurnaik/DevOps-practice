@@ -18,6 +18,12 @@ pipeline {
                 echo "Toggle Value: ${params.TOGGLE}"
                 echo "Choice: ${params.CHOICE}"
                 echo "password: ${params.PASSWORD}"
+                sh '''
+                #!/bin/bash
+                count=0
+                ((count++))
+                echo "$count"
+                '''
             }
         }
     }
