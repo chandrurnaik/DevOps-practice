@@ -1,0 +1,25 @@
+pipeline {
+    agent any 
+    tools {
+        maven 'Maven-3.9.3'
+    }
+    stages {
+        stage ('package-build') {
+            steps {
+                sh '''
+                cd ./maven/simple-war/
+                mvn clean package
+                cd ./target/
+                ls
+                '''
+            }
+        }
+        stage ('package-deploy') {
+            steps {
+                script {
+                    deploy adapters: [tomcat9(credentialsId: 'tomcat-deploy', path: '', url: 'http://3.109.54.97:8080/')], contextPath: '/itdefined-war-1.0.0', war: 'maven/simple-war/target/itdefined-war-1.0.0.war'
+                }
+            }
+        }
+    }
+}
