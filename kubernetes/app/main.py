@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route('/')
 def print_ip():
     hostname = socket.gethostname()
-    get_ip = socket.hostbyname(hostname)
+    get_ip = socket.gethostbyname(hostname)
     return get_ip
 
 @app.route('/health')
