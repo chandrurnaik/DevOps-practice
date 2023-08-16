@@ -11,7 +11,7 @@ def print_ip():
 
 @app.route('/health')
 def check_health():
-    return json.dumps({'success':True}, 200, {'contentType': 'application/json'})
+    return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 
 @app.route('/name')
 def print_name():
