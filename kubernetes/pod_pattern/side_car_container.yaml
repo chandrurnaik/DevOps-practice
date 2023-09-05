@@ -4,10 +4,10 @@ metadata:
   name: side-car-container
 spec:
   containers:
-    - name: ip-app-container
-      image: chandrunaikdevops/new-ip-app:2
+    - name: side-car-nginx
+      image: nginx
       ports: 
-        - containerPort: 8080
+        - containerPort: 80
     - name: side-car-busybox
       image: busybox
       command: ["/bin/sh"]

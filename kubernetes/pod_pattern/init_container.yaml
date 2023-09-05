@@ -7,9 +7,9 @@ spec:
     - name: init-busybox
       image: busybox
       command: ["/bin/sh"]
-      args: ["-c", "sleep 25"]
+      args: ["-c", "sleep 20"]
   containers:
-    - name: ip-apps
-      image: chandrunaikdevops/new-ip-app:2
+    - name: nginx-app
+      image: nginx
       ports:
-        - containerPort: 8080
+        - containerPort: 80
