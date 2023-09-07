@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: my-cluster-svc
 spec:
-  type: ClusterIp
+  type: ClusterIP
   selector:
     app: ip-app-sfs
   ports:
