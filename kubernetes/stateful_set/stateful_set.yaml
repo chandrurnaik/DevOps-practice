@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata: 
+  name: ip-app-sfs-pod
+spec: 
+  replicas: 4
+  selector:
+    matchLabels:
+      app: ip-app-sfs
+  template:
+    metadata:
+      labels:
+        app: ip-app-sfs
+    containers:
+      - name: ip-app-sfs-container
+        image: chandrunaikdevops/new-ip-app:2
+        ports:
+          - containerPort: 8080
+      
