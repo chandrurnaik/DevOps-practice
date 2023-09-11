@@ -6,7 +6,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: my-svc-accnt
-roles:
+roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
   name: my-sa-role
