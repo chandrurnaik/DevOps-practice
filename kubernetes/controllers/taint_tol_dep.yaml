@@ -14,9 +14,10 @@ spec:
     spec: 
       tolerations:
         - key:  test
-          value: podEnv
+          #value: podEnv
           effect: NoSchedule
-          operator: "Equal"      
+          #operator: "Equal"
+          operator: "Exists" 
       containers:
       - name: nginx
         image: nginx
