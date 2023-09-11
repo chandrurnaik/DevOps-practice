@@ -16,7 +16,7 @@ spec:
         - key:  test
           value: podEnv
           effect: NoSchedule
-          operator: "equal"      
+          operator: "Equal"      
       containers:
       - name: nginx
         image: nginx
