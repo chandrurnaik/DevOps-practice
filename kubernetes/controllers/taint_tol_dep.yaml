@@ -13,7 +13,7 @@ spec:
         app: nginx-app
     spec: 
       tolerations:
-        - key:  test=podEnv:NoSchedule
+        - key:  test
           value: podEnv
           effect: NoSchedule
           operator: "equal"      
