@@ -11,8 +11,8 @@ spec:
       volumeMounts:
         - name: my-hostpath-volume
           mountPath: /apps/new_hostpath
-volumes:
-  - name: my-hostpath-volume
-    hostPath:
-      path: /home/ubuntu/host_volume
-      type: DirectoryOrCreate
+  volumes:
+    - name: my-hostpath-volume
+      hostPath:
+        path: /home/ubuntu/host_volume
+        type: DirectoryOrCreate
