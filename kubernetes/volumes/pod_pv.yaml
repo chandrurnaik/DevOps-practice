@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pv-pod
+spec:
+  containers:
+    - name: pv-nginx
+      image: nginx
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: pvc-vol
+          mountPath: /apps/pvc_volume
+  volumes:
+    - name: pvc-vol
+      persistentVolumeClaim:
+        claimName: my-pvc
