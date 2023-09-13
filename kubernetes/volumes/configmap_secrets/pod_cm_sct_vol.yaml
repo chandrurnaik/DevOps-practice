@@ -15,8 +15,8 @@ spec:
           mountPath: "/apps/secret_vol"
   volumes:
     - name: cm-vol
-      configMapRef:
+      configMap:
         name: my-cm-vol
     - name: sct-vol
-      secretRef:
+      secret:
         secretName: my-sct-vol
