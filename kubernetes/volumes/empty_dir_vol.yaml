@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: pod-empty-dir
 spec:
-  conatiners:
+  contaners:
     - name: nginx
       image: nginx
       ports:
