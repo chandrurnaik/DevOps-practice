@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-cm-vol
+spec:
+  containers:
+    - name: nginx-cm-vol
+      image: nginx
+      ports:
+        - containerPort: 80
+      env:
+        - name: ENV
+          valueFrom:
+            configMapKeyRef:
+              name: my-cm-vol
+              key: env
+        - name: APP
+          valueFrom:
+            configMapKeyRef:
+              name: my-cm-vol
+              key: app
