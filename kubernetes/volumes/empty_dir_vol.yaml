@@ -20,4 +20,4 @@ spec:
           mountPath: "/var/log/nginx"
   volumes:
     - name: shared-vol
-      emptydir: {}
+      emptyDir: {}
