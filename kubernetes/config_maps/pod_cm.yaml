@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-cm
+spec:
+  containers:
+    - name: nginx-cm
+      image: nginx
+      ports:
+        - containerPort: 80
+      env:
+        - key: ENV
+          valueFrom:
+            configMapRef:
+               key: env
