@@ -1,21 +1,22 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pod-cm-vol
+  name: pod-cm-sct-vol
 spec:
   containers:
     - name: nginx-cm-vol
       image: nginx
       ports:
         - containerPort: 80
-      env:
-        - name: ENV
-          valueFrom:
-            configMapKeyRef:
-              name: my-cm-vol
-              key: env
-        - name: APP
-          valueFrom:
-            configMapKeyRef:
-              name: my-cm-vol
-              key: app
+      volumeMounts:
+        - name: cm-vol
+          mountPath: "/apps/configmap_vol"
+        - name: sct-vol
+          mountPath: "/apps/secret_vol"
+  volumes:
+    - name: cm-vol
+      configMapRef:
+        name: my-cm-vol
+    - name: sct-vol
+      secretRef:
+        secretName: my-sct-vol
