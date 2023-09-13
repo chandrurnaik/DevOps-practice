@@ -9,7 +9,13 @@ spec:
       ports:
         - containerPort: 80
       env:
-        - key: ENV
+        - name: ENV
           valueFrom:
-            configMapRef:
-               key: env
+            configMapKeyRef:
+              name: my-cm
+              key: env
+        - name: APP
+          valueFrom:
+            configMapKeyRef:
+              name: my-cm
+              key: app
