@@ -3,6 +3,6 @@ kind: ResourceQuota
 metadata:
   name: resource-quota
 spec:
-  resources:
+  hard:
     request.memory: "64Mi"
-    limit.memory: "148Mi"
+    limits.memory: "148Mi"
