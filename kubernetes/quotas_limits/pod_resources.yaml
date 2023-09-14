@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: pod-with-resorce
+spec:
+  containers:
+    - name: nginx-with-resource
+      image: nginx
+      ports:
+        - containerPort: 80
+      resources:
+        requests:
+          memory: "64Mi"
+          cpu: "500m"
+        limits:
+          memory: "128Mi"
+          cpu: "1000m"
