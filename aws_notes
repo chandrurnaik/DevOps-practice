@@ -1,0 +1,19 @@
+AWS Elastic Load Balancers:
+
+Classic Load Balancer (CLB):
+Explanation: The Classic Load Balancer is the legacy load balancer offered by AWS. It distributes incoming traffic evenly across 
+multiple EC2 instances in multiple Availability Zones. CLB operates at the transport layer (Layer 4) and is best suited for applications 
+that don't require advanced routing or content-based routing.
+
+Application Load Balancer (ALB):
+Explanation: The Application Load Balancer operates at the application layer (Layer 7) and is designed for routing HTTP/HTTPS traffic. 
+It allows you to define routing rules based on content (e.g., URL path, headers), making it suitable for modern web applications with multiple services or microservices.
+
+Network Load Balancer (NLB):
+Explanation: The Network Load Balancer operates at the transport layer (Layer 4) and is optimized for handling TCP and UDP traffic. 
+NLB is suitable for applications that require high performance, low-latency, and the ability to handle millions of requests per second, 
+such as gaming or IoT applications.
+
+Gateway Load Balancer (GWLB):
+Explanation: The Gateway Load Balancer is designed for distributing traffic to virtual appliances like firewalls, intrusion detection
+systems (IDS), or other network appliances. It allows you to route traffic to a group of virtual appliances to inspect and filter network traffic.
