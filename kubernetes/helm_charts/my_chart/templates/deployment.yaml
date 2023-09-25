@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "{{ .values.deploymentName }}"
+  name: {{ .Values.deploymentName }}
 spec:
-  replicas: "{{ .values.deploymentReplicaNO }}"
+  replicas: {{ .Values.deploymentReplicaCount }}
   selector:
     matchLabels:
       app: php-app
@@ -22,15 +22,3 @@ spec:
             cpu: 500m
           requests:
             cpu: 200m
-
----
-
-apiVersion: v1
-kind: Service 
-metadata: 
-    name: php-app-ci
-spec:  
-    selector:
-        app: php-app
-    ports: 
-      - port: 80

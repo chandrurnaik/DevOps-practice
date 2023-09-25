@@ -1,2 +1,2 @@
-deploymentName: main-app-with-hpa
-deploymentReplicaNO: 1
+deploymentName: main-app-with-hpa 
+deploymentReplicaCount: 2
