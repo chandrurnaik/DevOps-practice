@@ -1,5 +1,4 @@
 terraform {
-    required_version = "~>1.3.7"
     
     required_providers {
         aws = {
@@ -12,5 +11,7 @@ terraform {
         key = "main/terraform.tfstate"
         region = "us-west-2"
         dynamodb_table = "dynamodb_state_locking_table"
+        access_key = "AKIAZNTAAFYODARH5ENY"
+        secret_key = "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"
     }
 }
