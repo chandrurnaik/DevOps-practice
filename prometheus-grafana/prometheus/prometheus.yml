@@ -40,6 +40,11 @@ scrape_configs:
 
     static_configs:
          - targets: ['node-exporter:9100']
+  
+  - job_name: "Jenkins Job"
+    scrape_interval: 10s
+    static_configs:
+         - targets: ["13.232.190.44:8080"]
 
 
   - job_name: 'cadvisor'
