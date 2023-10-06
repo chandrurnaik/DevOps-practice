@@ -1,0 +1,6 @@
+deploymentName: nginx-controller
+deploymentReplicas: 4
+labelName: app-nginx
+imageName: nginx
+conatinerName: nginx-container
+containerPort: 80
