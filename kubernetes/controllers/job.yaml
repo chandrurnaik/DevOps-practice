@@ -3,8 +3,9 @@ kind: Job
 metadata:
   name: my-job
 spec:
-  completions: 10
-  parallelism: 5
+  completions: 1
+  # parallelism: 5
+  backoffLimit: 2
   template:
     spec:
       containers:
