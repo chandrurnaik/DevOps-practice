@@ -12,3 +12,4 @@ spec:
           - /bin/sh
           - -c
           - "sleep 5; echo 'new job'"
+      restartPolicy: Never
