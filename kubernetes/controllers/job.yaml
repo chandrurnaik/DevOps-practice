@@ -3,6 +3,7 @@ kind: Job
 metadata:
   name: my-job
 spec:
+  completions: 5
   template:
     spec:
       containers:
@@ -11,5 +12,5 @@ spec:
           command:
           - /bin/sh
           - -c
-          - "sleep 2; exit 1"
+          - "sleep 2; exit"
       restartPolicy: Never
