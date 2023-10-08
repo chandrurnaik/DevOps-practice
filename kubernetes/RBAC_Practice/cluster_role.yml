@@ -1,0 +1,8 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: my-new-cr 
+rules:
+- apiGroups: []
+  resources: ['pod', 'deployment']
+  verbs: ['git', 'list', 'delete']

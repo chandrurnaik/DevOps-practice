@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: my-new-role-binding
+  namespace: default
+subjects:
+- kind: ServiceAccount
+  name: my-new-sa
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role 
+  name: my-new-role
+  
