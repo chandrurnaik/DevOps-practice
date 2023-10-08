@@ -3,6 +3,6 @@ kind: ClusterRole
 metadata:
   name: my-new-cr 
 rules:
-- apiGroups: []
+- apiGroups: ["*"]
   resources: ['pod', 'deployment']
   verbs: ['git', 'list', 'delete']

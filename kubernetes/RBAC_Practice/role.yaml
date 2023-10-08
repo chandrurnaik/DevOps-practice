@@ -4,6 +4,6 @@ metadata:
   name: my-new-role
   namespace: default 
 rules:
-- apiGroups: []
+- apiGroups: ["*"]
   resources: ['pod', 'services', 'deployment']
   verbs: ['get', 'list']
