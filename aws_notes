@@ -17,3 +17,14 @@ such as gaming or IoT applications.
 Gateway Load Balancer (GWLB):
 Explanation: The Gateway Load Balancer is designed for distributing traffic to virtual appliances like firewalls, intrusion detection
 systems (IDS), or other network appliances. It allows you to route traffic to a group of virtual appliances to inspect and filter network traffic.
+
+
+Important services to add for interview in aws (if asked like which services in aws used to validate, optimize, cost optimize, performance optimize with aws infrastructure, security vulnarability with aws accounts)
+ => There are two 2 services
+   ==> AWS Security Hub
+      => It is a service designed to help you monitor and manage security and compliance across multiple  AWS accounts and services.
+
+   ==> AWS Trusted Advisor
+      => Similarity: AWS Trusted Advisor provides recommendations to help optimize AWS resources for cost,     performance, and security.
+       Key Features: It offers security checks related to exposure of resources, such as S3 buckets with public access.
+       Use Cases: Cost optimization, resource security, and performance improvement.
