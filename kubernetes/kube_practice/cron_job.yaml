@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cronjob-practice
+spec:
+  schedule: "* * * * *" 
+  successfulJobsHistoryLimit: 3
+  failureJobHistoryLimit: 2
+  jobTemplate:
+    spec:
+      completions: 5
+      parallelism: 2
+      activeDeadlineSeconds: 10
+      backoffLimit: 3
+      template:
+        spec:
+          containers:
+          - name: busybox
+            image: busybox
+            command:
+            - /bin/sh
+            - -c 
+            - echo "cron job practice"; sleep 10;
