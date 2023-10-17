@@ -1,0 +1,52 @@
+Only with playbook file 
+ansible-playbook <playbook_file>
+
+if with inventory file 
+ansible-playbook <playbook_file> -i <inventory_file>
+
+to dryrun 
+ansible-playbook <playbook_name> --check
+
+To create role in ansible 
+==> first need to create roles directory, after that within it we can 
+    roles 
+    syntax for createing roles
+    ansible-galaxy init <role_name> 
+
+==> Roles directory structure 
+   => Defaults = to store variable and make use of it in any tasks 
+      ex: using jinga2 template 
+         suppose variable is => my_name: "chandru"
+         using way => "{{ my_name }}" ##it will directly take it 
+   => Files = where we store static files and directory for tasks
+   => Handlers = Depending on the execution of taks, if certaing action to be performed
+                 we can make use of it.
+        syntax => within tasks 
+                 notify: <Handlers_name> 
+
+    => Tasks = Here is where we actually write all tasks configuration in a small chunks yaml files
+               and call them in main.yaml playbook file with tasks
+               ex: - include_taks: <tasks_file_name> 
+    => Templates = It is used store Dynamic files and directory
+    => Vars = we use this also to define variable, just like Defaults
+              But Defaults takes Precedence over Vars(if we defined same variables)
+
+How to run Roles 
+=> we need create roles.yaml playbook book with roles included 
+  ex: ---
+      - name: playbook with roles 
+        hosts: all
+        become: true 
+        # at tasks level 
+        tasks:
+          - include_roles: <role_name>
+        # at play level 
+        roles:
+          - <role_name>
+
+concepts to remember:
+serials 
+ansible_facts
+ansible_distributor 
+loops = used to run multiple packages
+with_items = same as loops 

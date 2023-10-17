@@ -1,0 +1,55 @@
+---
+- name: Playbook for installing packages 
+  hosts: all #can define single IP also, localhost, group_names of inventary files 
+  become: true #at play level 
+  #root_user: root 
+  serial: 3 # now it will execute taks at a time
+  gather_facts: true #to gather details about hosts machines we use this 
+  tasks:
+    - name: install git on hosts machine 
+      #become: true #at taks level 
+      apt: #module 
+      #ansible.builtin.apt: # can also use this for module 
+        name: git 
+        state: present # latest also used 
+        update_cache: true 
+
+    - name: gathering facts of hosts 
+      debug:
+        var: ansible_facts 
+
+    - name: installing multiple packages like git, jq, python, httpd with loops 
+      apt:
+        name: "{{ items }}"
+        state: latest 
+        update_cache: true
+      loops:
+        - git 
+        - jq 
+        - httpd 
+
+    - name: installing multiple packages like git, jq, python, httpd with with_items
+      apt:
+        name: "{{ items }}"
+        state: latest 
+        update_cache: true
+      with_items:
+        - git 
+        - jq 
+        - httpd 
+
+    - name: to check get version with when condition
+      command: ["git", "--version"] 
+      when: ansible_distributor | lower == "ubuntu"
+      register: sample_output 
+      ignore_errors: true # using this if this tasks fails, it will ignored n followed tasks will be executed
+
+    - name: printing registered output 
+      debug:
+        var: sample_output 
+
+    - name: printing registered output with msg 
+      debug:
+        msg: "{{ sample_output }}"
+      
+

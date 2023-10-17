@@ -1,0 +1,19 @@
+[frontend]
+10.23.76.0 ansible_user=ubuntu ansible_ssh_private_key_file=<path of pem key> ansible_become_user=root 
+10.23.76.1 ansible_user=ubuntu ansible_ssh_private_key_file=<path of pem key> ansible_become_user=root
+
+[backend]
+10.23.76.4 ansible_user=ubuntu ansible_ssh_private_key_file=<path of pem key> ansible_become_user=root 
+10.23.76.7 ansible_user=ubuntu ansible_ssh_private_key_file=<path of pem key> ansible_become_user=root
+
+# as there is comman field in both group we can seperate them as 
+[frontend:vars]
+ansible_user=ubuntu ansible_ssh_private_key_file=<path of pem key> ansible_become_user=root
+
+[backend:vars]
+ansible_user=ubuntu ansible_ssh_private_key_file=<path of pem key> ansible_become_user=root 
+
+#we can also have parent group 
+[main:children]
+frontend
+backend
