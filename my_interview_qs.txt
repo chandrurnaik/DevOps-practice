@@ -1,0 +1,52 @@
+Jenkins cicd process (just a breif)
+=> we are using source code management tool github in our company 
+=> and integrated github to jenkins with git webhook
+=> whenever developer push changes to remote repo, by webhook jenkins job automatically triggers
+=> in jenkis using declarative pipeline job we are inplementing contineous integration and delivery approach 
+=> and also we are maintaining jenkinsfiles in github only, just calling it in jenkins pipeline job
+=> jenkinsfile involves ci stages like checkout, build, code scan, image build, image scan, 
+   image push
+=> we are maintaing dockerfile in github and using it in image build stage 
+=> jenkinsfile involves cd stages like Deploy or update deployment file 
+=> both build, push docker image we are doing it by shell scripting 
+=> deploying to kubernetes by helm, again by helm commands 
+=> we are maintaining all builds, docker images and helm chart in jfrog artifactory 
+
+Default port of jfrog is => 9000 
+How to integrate jfrog to jenkins 
+   => Install plugin Artifactory in jenkins => go to Manage Jenkins => system => search for jfrog
+     => set jfrog url and username, password 
+   
+   => using in pipeline => 2 ways => using jfrog cli and using blocks like rtupload and all (usually i refer documentory)
+   => for jfrog cli we need to install Jfrog plugin 
+   => we install and run jfrog artifactory in ec2 instance just like jenkins
+
+How to integrate sonarqube to jenkins 
+  => for this install sonarqube plugin in jenkins 
+  => while code scan stage in pipeline, we need to pass sonarqube url 
+  => and also just like jenkins server, have install and run sonarqube on ec2 instance and moniter 
+
+
+1. Default ports of monitoring tools 
+   Prometheus => 9090 
+       => can change port in prometheus.yaml file 
+   Grafana => 3000 
+       => can change port in grafana.ini file
+   ElasticSearch => 9200 
+       => can change port in ElasticSearch.yaml file
+   Kibana => 5601 
+       => can change port in Kibana.yaml file
+
+2. what is inode in linux 
+   An inode in Linux is a data structure that stores information about a file or directory. Each file and 
+   directory on a Linux filesystem has its own inode. 
+   The inode contains information such as the file's size, permissions, owner, and location on the disk.
+
+3. adduser command in linux 
+   it will do both useradd and passwd in a single execution 
+
+4. what is jombie process in linux 
+   A zombie process in Linux is a process that has completed its execution, but its parent process has 
+   not collected its exit status. This means that the process is still visible in the process table, 
+   but it is no longer using any system resources.
+
