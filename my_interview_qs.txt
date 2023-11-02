@@ -50,3 +50,5 @@ How to integrate sonarqube to jenkins
    not collected its exit status. This means that the process is still visible in the process table, 
    but it is no longer using any system resources.
 
+5. how to create images out of docker container 
+   using command => docker commit <container_name> <new_image_name>:<tag>
