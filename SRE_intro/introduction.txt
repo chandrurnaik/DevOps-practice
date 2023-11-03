@@ -7,8 +7,8 @@ My expertise includes designing robust monitoring and alerting systems, incident
 management, Change Management, Capacity Planning, Documenting Service Architecture, plans, procedures
 and implementing infrastructure as code, reducing downtime, Automate Repeatative and 
 Manual operations, enhancing system security, and driving cost-efficiency through effective SRE practices.
-Work under SLA (Service Level Agreement), Change, Incident Management &amp;CAB meetings to
-increase productivity &amp; performance of application
+Work under SLA (Service Level Agreement), Change, Incident Management and CAB meetings to
+increase productivity & performance of application.
 
 I have expertise in Devops tools like:
 Cloud computing platforms AWS
