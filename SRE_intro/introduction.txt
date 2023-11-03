@@ -10,6 +10,8 @@ Manual operations, enhancing system security, and driving cost-efficiency throug
 Work under SLA (Service Level Agreement), Change, Incident Management and CAB meetings to
 increase productivity & performance of application.
 
+##  My journey in the SRE and DevOps field has given me hands-on experience with a 
+wide range of technologies ##
 I have expertise in Devops tools like:
 Cloud computing platforms AWS
 containerization tool such as Docker
