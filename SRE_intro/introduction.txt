@@ -1,0 +1,34 @@
+my self Chandrashekhar R. I'm currently work as a SRE Devops Engineer at Rakuten and i have 
+over all 5.1 years of experience in this field. Being an SRE i was focused on ensuring the 
+reliability, scalability, and performance of complex software systems.
+I have a deep understanding of the SRE DevOps principles and practices.
+
+My expertise includes designing robust monitoring and alerting systems, incident response 
+management, Change Management, Capacity Planning, Documenting Service Architecture, plans, procedures
+and implementing infrastructure as code, reducing downtime, Automate Repeatative and 
+Manual operations, enhancing system security, and driving cost-efficiency through effective SRE practices.
+Work under SLA (Service Level Agreement), Change, Incident Management &amp;CAB meetings to
+increase productivity &amp; performance of application
+
+I have expertise in Devops tools like:
+Cloud computing platforms AWS
+containerization tool such as Docker
+Container orchestration platforms such as Kubernetes
+Configuration Management tool such as Ansible
+Infrastructure as code tools such as Terraform
+Monitoring and logging tools such as Prometheus and Grafana, ELK Stack
+CI/CD tools such as Jenkins
+Build Tool such as Maven 
+SCM Tool Git, GitHub
+Application Server tool tomcat
+Programming Language as Python 
+Scripting Language as Shell, Python 
+
+
+In my current role at Rakuten, I was responsible for the reliability and performance of 
+a large-scale Trade Investment Baking platform. I was working closely with developers and operations 
+teams to implement SRE and DevOps best practices to the project including setting up and managing 
+large-scale Kubernetes clusters, automate the complex deployment by CI/CD pipelines, handled complex 
+cloud migration Test, Pre-prod and Prod environments, handled complex infra provisioning by terraform, 
+Setting up application centric Disaster Recovery, Automating Various tasks using Bash Shell, Python, 
+Maven and Jenkins to monitor infra and applications setted up ELK stack from scratch.
