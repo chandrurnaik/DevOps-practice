@@ -52,3 +52,134 @@ How to integrate sonarqube to jenkins
 
 5. how to create images out of docker container 
    using command => docker commit <container_name> <new_image_name>:<tag>
+
+6. braching starturgies that you are following in your company 
+   Basically we had 4 branches within the vcs 
+   1. features branch => deployed to dev environment
+   2. main branch => deployed to stagging or QA environment
+   3. realease branch => deployed to pre-prod environment and later promoted to prod environment
+   4. hotfix branch => any change request by customer is maintained in hotfix branch and later
+                       merge to all the branches
+    
+   we had seperate jenkins cicd pipelines for each branches 
+
+
+   features branch: any new features will be devoped by engineering team in features branch.
+   and when an developer push changes to features branch a jenkins pipeline will get triggered
+   will be deployed to dev environment and if everything looks fine it will be promoted to main branch
+   by developer
+
+   main branch: it is where actuall application is going on. any minor changes with application will be 
+   done here, as a developer push changes to main branch a jenkins pipeline will get triggered 
+   and get deployed to QA env, where app is tested for 2-4 days and everything looks fine there.
+   later main branch get merge with release branch by devops team.
+
+   realease branch: as main barnch get merged with realease branch by devops team again another jenkins 
+   pipeline get triggred and deployed first to pre-prod (where it run some more set test) and later get 
+   promoted and one more jenkins pipeline get triggered by us and deployed to prod env.
+
+
+7. Disaster Recovery management
+   => It is a set of procedure and measures to recover and restore system to its normal operations in the 
+      event of major outage, natural disaster or failures.
+   => basically it is a another set of prod evn in different region 
+   => we have RTO and RPO defined for DR in SLA 
+   => both RTO and RPO totally depends on individual projects 
+   => in our company 
+       RTO is 30min
+       RPO is latest 4hrs of data 
+   => DR is like a replica of prod evn and if major outage happens with prod env as per RTO 
+      we have restore env within 30min and restore data backup of last 4 hrs from the time 
+      of major outage 
+   => only critical resources are present in DR env and all are of stop state, so to cost optimize it.
+   => to implement DR i have done some automation by python script 
+      1. created a backup schedule for every 4hrs (starting from 12AM)
+      2. copy the backup snapshot from source region to DR region 
+      3. Restoring backup 
+      4. cleaning up the old backups every week  
+
+8. 3-Tier Architecture (explain only when its highly required)
+   => 3-tier Architecture app module 
+      => frontend (ui)
+      => backend 
+      => database 
+   => In my previous projects i have implemented 3-tier Architecture in instances 
+      Now we have migrated to kubernetes 
+   => only explain this if they asked to explain old 3-teir architecture on instances 
+      => first we created VPC with specified CIDR range to it 
+      => create 3 private subnet with 2 AZ each 
+         => private-subnet-frontend 
+         => private-subnet-backend 
+         => private-subnet-database
+      => private-subnet-frontend
+         => using Auto Scaling Group we deploy frontend in 2 instances resides in 2 Az's 
+      => private-subnet-backend
+         => using Auto Scaling Group we deploy backend in 2 instances resides in 2 Az's
+      => private-subnet-database
+         => here i created a AWS RDS with one primary db in 1 AZ and one more secondary db
+            another AZ (so to privide high availability)
+      => created ELB on public subnet of vpc in both AZ's 
+      => firstly user request come to Route53 than its routed to ELB to frontend 
+      => again by frontend ec2 instance resquest is routed to ALB of backend 
+      => then from backend to database
+      => then from backend response to send to backend and frontend
+      => this was a 3-tier architecture module i have implemented in my pervious project 
+
+9. prometheus Architecture
+   => prometheus is a open source and widely used monitoring and alerting toolkit
+   => its architecture has multiple componenets 
+      1. Prometheus Server
+      2. Exporter 
+      3. Pushgateway
+      4. Alertmanager
+      3. Grafana Visualization and dashboard tool 
+   => Prometheus Server:
+      It is a first core component of prometheus, which will scrap the metrics data from 
+      target endpoints on specified scrape interval using Data Replication Worker and store 
+      the data in its own Time-seriesed Dadatabase store it in node HDD or SSD or containers
+      and process the data by HTTP server using promQL language and made data avaialable to Grafana 
+      by http servers.
+      1. Data Retrival Worker
+      2. storing 
+      3. HTTP Server 
+   => Exporters:
+      The exporters are a scripts or simplified application that run along with application which
+      will collect and expose the data in a prometheus data formates
+   => prometheus works on pull based data model, target machines dont need to push data 
+   => Pushgateway:
+      If we have any short-lived base job that is not feasible to pull data to prometheus servers 
+      prometheus provided Pushgateway componenets it is a intermidiary for collecting push data 
+      and it is pulled by prometheus server 
+   => Alertmanager:
+      It is componenet using which we can get alerts via emails or slacks when the metrics met the 
+      alerting rules set in prometheus servers
+   => Grafana:
+      It is Visualization and dashboarding tools best suited to prometheus
+      => we configure prometheus as Data source in garfana and as per requirements we create dashboard,
+         charts, graphs and query data using PromQL 
+
+10. explain the Architecture how you implement the Monitoring 
+    1. Define Objectives and SLI:
+    2. Selecting Monitoring Tools: 
+    3. Instrument the application:
+    4. Set-up Prometheus:
+    5. Implement Alerting:
+    6. Visualize with Grafana: 
+    7. Continuous Monitoring and Scaling:
+    8. Incident Response:
+    9. Capacity Planning:
+
+11. docker file for java application:
+    FROM openjdk:11-jre-slim 
+    WORKDIR /app
+    COPY target/your-app.jar . 
+    ENTRYPOINT ['java', '-jar', 'your-app.jar'] 
+
+12. difference between SRE and Devops
+    SRE: SRE is a set of practice and principle developed by google to ensure reliability and availability
+         of large-sclaed systems and servises. They focuse on SLO and SLI that defines desired reliability
+         of the servises and set targets with respect to it and aims to meet the targets.
+         SRE work under data-driven approach and closely work with software developers.
+    DEvops: Devops are like mainly aims to bridge gap between development and operation teams and mainly focus 
+            Automation and speed up the software delivery process. Devops dont gives more importances to
+            site reliability and all. they just aim to speed the softare deployment process.
