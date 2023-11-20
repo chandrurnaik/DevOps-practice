@@ -183,3 +183,112 @@ How to integrate sonarqube to jenkins
     DEvops: Devops are like mainly aims to bridge gap between development and operation teams and mainly focus 
             Automation and speed up the software delivery process. Devops dont gives more importances to
             site reliability and all. they just aim to speed the softare deployment process.
+
+13. How to connect from browser to application running inside a private subnet.
+    => we can achieve it by creating ELB in public subnet of that VPC and in 
+       Target Groups selecting those private instance.
+
+14. How to bring changes made manually to aws in terraform statefile 
+    => we can use terraform import command to add the new entries in terraform statefile 
+   
+15. what will happen if provisioned infrastructure using terraform is manually made some changes by someone
+    and you do terraform apply for new changes.
+    => Terraform will detect the changes made in the console and will attempt to reconcile them with the 
+       changes defined in your Terraform configuration. This means that Terraform may destroy 
+       and recreate resources, or it may update them in-place.
+    => If there are any conflicts between the changes made in the console and the changes defined in your
+       Terraform configuration, Terraform will stop and ask you to resolve the conflicts manually. This 
+       is to prevent Terraform from making unexpected changes to your infrastructure.
+    => Once you have resolved any conflicts, you can re-run terraform apply and Terraform will apply 
+       the changes defined in your configuration.
+
+    To handle this situation:
+    => Import Resources: You can import manually created resources into Terraform's state. This allows 
+       Terraform to manage those resources going forward. However, care must be taken to ensure that the 
+       state in Terraform accurately reflects the actual state of resources.
+    => Plan and Review: Always perform a terraform plan before applying changes. This will show what 
+       Terraform intends to do. Review this plan carefully to understand how Terraform will reconcile 
+       the differences between the desired state in your configuration files and the actual state of 
+       resources.
+    => Collaboration and Documentation: Ensure team members are aware of Terraform's management and that
+       manual changes should be communicated and ideally integrated back into Terraform's configuration.
+
+16. if terraform statefile get deleted and you do terraform apply again, what will happen?
+    => Terraform will think that all the infrastructure has been destroyed and think it as a new terraform
+       script and will try to recreate it from scratch and result in duplication or conflicts.
+
+       There are a few things you can try to recover it:
+       => If you have a backup of the state file, you can restore it.
+       => If you do not have a backup of the state file, you can try to recreate it from scratch using the 
+          terraform import command.
+       => If you cannot recreate the state file, you will need to destroy all of your infrastructure and 
+          then re-provision it using Terraform.
+
+17. if customer not able to access application through url, how to resolve it.
+    Involve several steps:
+    => Check Application Status:
+       Verify if the application is running and accessible internally.
+       Check application logs for any errors or warnings that might indicate issues.
+
+    => DNS Resolution:
+       Confirm if the URL is resolving to the correct IP address.
+       Check DNS settings for any misconfigurations or DNS resolution issues.
+
+    => Load Balancer or Proxy:
+       If there's a load balancer or proxy in front of the application, check its configuration and logs 
+       for any issues.
+       Verify if the load balancer is distributing traffic as expected.
+
+    => Security and Firewall:
+       Review security groups, firewalls, and access control lists to ensure they aren't blocking 
+       incoming traffic.
+       Check for any recent security updates or changes that might have affected access.
+       
+    => Application Code and Configuration:
+       Examine the application code for errors or recent changes that might have introduced issues.
+       Validate the application's configuration files for correctness.
+
+    => Resource Utilization:
+       Monitor resource utilization (CPU, memory, disk space) on servers or containers to ensure they're 
+       not overloaded.
+
+    => Service Dependencies:
+       Check if any external services or dependencies (databases, APIs) that the application relies on 
+       are accessible and functioning correctly.
+
+    => Incident Response and Communication:
+       If the issue identified, initiate an incident response process, involving relevant team members or 
+       escalation paths.
+       Communicate with stakeholders, keeping them informed about the investigation and steps being 
+       taken to resolve the issue.
+      
+    => Test the fix: 
+       Once you have fixed the problem, you need to test it to make sure that it is fixed. 
+       This may involve trying to reproduce the problem again or asking the customer to try to access 
+       the application again.
+
+    => Logging and Monitoring:
+       Ensure robust logging and monitoring systems are in place to gather data for troubleshooting and 
+       post-incident analysis.
+
+    => Documentation and Post-Incident Analysis:
+       Document all steps taken during the investigation and resolution process.
+       Conduct a post-incident analysis to identify the root cause and implement preventive measures to 
+       avoid similar issues in the future.
+
+18. how to create a self managed kubernetes cluster
+    => we have used kubeadm tool to create kubernetes cluster manually  
+    => before all the we have to provisions infrastructure as per requirements by creating vpc with cidr range 
+       and launging instances in multi AZ's 
+    => we had return a scripts to provision both master nodes and worker nodes on instances, we just scripts
+       on them 
+    => Install Kubernetes Components:
+       Install kubeadm, kubectl, and kubelet on all nodes.
+       Initialize the control plane node or master node using kubeadm init.
+       Join worker nodes to the cluster using the token generated by kubeadm init.
+    => we are using quoram calculation to calculate number of worker nodes to ensure high avaialability for
+       kubernetes cluster
+    => we usually maintain 3 master nodes for lower environment and 5 to 7 master nodes higher environments
+    => we had around 20-25 worker nodes in our organization 
+    
+ 
