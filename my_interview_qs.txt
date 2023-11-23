@@ -25,6 +25,76 @@ How to integrate sonarqube to jenkins
   => for this install sonarqube plugin in jenkins 
   => while code scan stage in pipeline, we need to pass sonarqube url 
   => and also just like jenkins server, have install and run sonarqube on ec2 instance and moniter 
+  => Prerequisites:
+     => SonarQube Server: Make sure you have a SonarQube server running and accessible to your Jenkins instance.
+     => SonarQube Scanner: Install the SonarQube Scanner on the Jenkins machine or configure it as part of your 
+        Jenkins environment.
+     => Configure SonarQube in Jenkins: Configure SonarQube within Jenkins. This usually involves providing the 
+        SonarQube server URL and authentication details.
+        => steps: To configure the plugin, go to the Jenkins plugin manager and click the "Manage Plugins" button. 
+        Then, click the "SonarQube Scanner" plugin and click the "Configure" button. In the configuration window, 
+        enter the following information: SonarQube server URL and authentication details
+
+  => pipeline code: 
+     pipeline {
+    agent any
+
+    stages {
+        stage('SonarQube Scan') {
+            steps {
+                // Checkout code from your repository
+                checkout scm
+
+                // Run SonarQube analysis
+                script {
+                    def scannerHome = tool 'sonar'; // Assuming 'sonar' is configured in Jenkins tools
+                    withSonarQubeEnv('SonarQube_Server') {
+                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=your_project_key 
+                        -Dsonar.sources=src"
+                    }
+                }
+            }
+        }
+
+        // Other stages in your pipeline...
+    }
+    
+    // Post-build actions or notifications...
+}
+
+How to do image scan in cicd jenkins pipeline using rapid 7:
+=> To perform image scanning in your CI/CD Jenkins pipeline using Rapid7, follow these steps:
+   => Install the Rapid7 InsightVM Container Image Scanner plugin and configured within your CI/CD environment.
+   => Set up Credentials: Store any required credentials or API keys securely within Jenkins to 
+      access Rapid7's services.
+=> Here’s an example of what a Jenkins pipeline step might look like for initiating a Rapid7 scan:
+   pipeline {
+    agent any
+    stages {
+        stage('Rapid7 Image Scan') {
+            steps {
+                script {
+                    // Fetch required credentials
+                    withCredentials([usernamePassword(credentialsId: 'rapid7Credentials', 
+                    usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                        
+                        // Define your Rapid7 scan command/API call
+                        def imageToScan = "your_image_name:tag"
+                        def apiKey = "YOUR_RAPID7_API_KEY"
+                        
+                        // Example command or API call to trigger the scan
+                        sh "rapid7-tool scan-image -i $imageToScan --api-key $apiKey"
+                        
+                        // Or use HTTP requests or appropriate Rapid7 SDK methods to trigger the scan
+                        // Example: httpRequest "https://api.rapid7.com/v1/scans"
+                    }
+                }
+            }
+        }
+        // Additional stages for deployment, testing, etc.
+    }
+    // Post-build actions, notifications, etc.
+}
 
 
 1. Default ports of monitoring tools 
@@ -291,4 +361,55 @@ How to integrate sonarqube to jenkins
     => we usually maintain 3 master nodes for lower environment and 5 to 7 master nodes higher environments
     => we had around 20-25 worker nodes in our organization 
     
+19. if kubernetes scheduler get crashed, how to resolve it
+    => 1.Check Scheduler Status:
+          Confirm if the scheduler is actually not running by checking its status using:
+            kubectl get pods -n kube-system
+          Look for the scheduler pod and its status (Running, CrashLoopBackOff, Error, etc.).
+       2.Restart the Scheduler Pod:
+          If the scheduler pod is not running or has errors, try restarting it:
+          kubectl delete pod -n kube-system <scheduler-pod-name>
+         Kubernetes will automatically recreate the scheduler pod.
+       3.Examine Scheduler Logs:
+          Check the logs of the scheduler pod to identify any errors or issues that might be causing the
+          crash:
+          kubectl logs -n kube-system <scheduler-pod-name>
+          Analyze the logs for any specific error messages or warnings.
+       4.Check Node Health and Resources:
+          Ensure the nodes in the cluster are healthy and have enough resources (CPU, memory, disk) 
+          available for scheduling new pods.
+          Check if there are any node-specific issues impacting scheduling.
+       5.Restart Kubernetes Components:
+          If restarting the scheduler doesn't resolve the issue, consider restarting other relevant 
+          Kubernetes control plane components such as kube-controller-manager or kube-apiserver.
+       6.Investigate Configuration:
+          Review the configuration of the scheduler for any misconfigurations that might be causing 
+          problems. Compare it with a known working configuration.
+       7.Update Kubernetes Version:
+          Consider upgrading Kubernetes to the latest stable version. Sometimes, issues with components 
+          are resolved in newer versions.
+
+20. how to recover data from pods running in worker nodes, if kubernetes cluster gets down
+    => 1.Identify the type of persistent storage:
+         => Persistent storage: Data stored in persistent storage is preserved even when the pod 
+                                terminates. Persistent storage options include:
+               Local storage: Data is stored on the local filesystem of the worker node.
+               Cloud storage: Data is stored in a cloud-based storage service.
+   => 2.Locate the persistent storage:
+        => Local storage: The data is located on the local filesystem of the worker node. You can access 
+           the data by physically accessing the worker node or mounting the filesystem remotely.
+           Cloud storage: The data is located in the cloud storage service. You can access the data using 
+           the cloud storage service's API or client applications.
+
+   => 3.Recover the data:
+        => Local storage: Copy the data from the worker node's filesystem to another location.
+           Cloud storage: Download the data from the cloud storage service to another location.
+
+   Here are some additional considerations for recovering data from pods running in worker nodes:
+      Backups: Regularly back up your data to prevent data loss in case of cluster failures or other 
+              incidents.
+      Replication: Use replication mechanisms to ensure that data is stored on multiple nodes to improve 
+              availability and resilience.
+      Disaster recovery: Develop a disaster recovery plan that includes procedures for recovering data 
+             and applications in case of major outages.
  

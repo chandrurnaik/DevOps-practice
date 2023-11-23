@@ -34,3 +34,39 @@ large-scale Kubernetes clusters, automate the complex deployment by CI/CD pipeli
 cloud migration Test, Pre-prod and Prod environments, handled complex infra provisioning by terraform, 
 Setting up application centric Disaster Recovery, Automating Various tasks using Bash Shell, Python, 
 Maven and Jenkins to monitor infra and applications setted up ELK stack from scratch.
+
+
+if job roles is senior devops engineer (Not SRE), then use this:
+roles and responsibilities for senior devops engineer:
+Infrastructure Design and Automation: Design, implement, and maintain scalable infrastructure using tools like 
+Terraform, CloudFormation, or Ansible to automate provisioning and configuration.
+
+Continuous Integration/Continuous Deployment (CI/CD): Develop and manage CI/CD pipelines to automate software 
+delivery, testing, and deployment processes, using tools such as Jenkins, GitLab CI/CD, or CircleCI.
+
+Cloud Services Management: Manage cloud resources efficiently, including setting up and optimizing services on AWS, 
+Azure, GCP, or other cloud providers.
+
+Monitoring and Logging: Implement monitoring solutions to track system performance, troubleshoot issues, and ensure 
+high availability using tools like Prometheus, Grafana, ELK stack (Elasticsearch, Logstash, Kibana), or others.
+
+Security: Implement security best practices and tools to ensure the safety of the infrastructure, including access 
+control, encryption, and vulnerability assessments.
+
+Collaboration and Communication: Work closely with development, operations, and other teams to streamline processes,
+facilitate communication, and ensure alignment of DevOps practices.
+
+Scripting and Coding: Develop scripts and code as needed for automation, tool development, and integration purposes 
+using languages like Python, Bash, or PowerShell.
+
+Troubleshooting and Incident Response: Quickly diagnose and resolve infrastructure issues, participate in incident 
+response, and contribute to post-mortem analysis for continuous improvement.
+
+Documentation and Best Practices: Maintain clear and concise documentation of systems, processes, and best 
+practices for the team and stakeholders.
+
+Performance Optimization: Identify bottlenecks and optimize system performance, making recommendations for 
+improvements.
+
+Adopting New Technologies: Stay updated with the latest DevOps trends, tools, and technologies, evaluating and 
+integrating new tools that can enhance the team's productivity and efficiency.
