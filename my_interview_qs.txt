@@ -412,4 +412,18 @@ How to do image scan in cicd jenkins pipeline using rapid 7:
               availability and resilience.
       Disaster recovery: Develop a disaster recovery plan that includes procedures for recovering data 
              and applications in case of major outages.
+
+21. ELK Stack (Elastic Stack):
+    => ELK stack is a free and open source tool that is used for log management and Analytics.
+    => There are 3 main components in ELK Stack:
+       => 1. Elastic Search: It is a search engine that stores and indexes data, making it possible to Search
+             and analyse data quickly and efficiently.
+       => 2. Logstash: It is a log data pipeline used for collecting, processing, and send data to elastic Search.
+       => 3. Kibana: It is a interface allows us to Visualize and analyse data from Elastic Search
+    => The ELK Stack is used for a variety of purposes, including:
+       Log monitoring: Collecting and analyzing logs from applications and infrastructure to identify and 
+       troubleshoot problems.
+       Security analytics: Monitoring logs for suspicious activity and detecting intrusions.
+       Application performance monitoring: Tracking application performance and identifying performance bottlenecks.
+       Business intelligence: Analyzing data to gain insights into business trends and customer behavior.
  

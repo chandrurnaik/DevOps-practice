@@ -3,8 +3,9 @@ over all 5.1 years of experience in this field. Being an SRE i was focused on en
 reliability, scalability, and performance of complex software systems.
 I have a deep understanding of the SRE DevOps principles and practices.
 
-My expertise includes designing robust monitoring and alerting systems, incident response 
-management, Change Management, Capacity Planning, Documenting Service Architecture, plans, procedures
+My expertise includes design, implement and manage complex cloud infrastructure in higher environments,
+designing robust monitoring and alerting systems, incident response management, Change Management, 
+Capacity Planning, Documenting Service Architecture, plans, procedures
 and implementing infrastructure as code, reducing downtime, Automate Repeatative and 
 Manual operations, enhancing system security, and driving cost-efficiency through effective SRE practices.
 Work under SLA (Service Level Agreement), Change, Incident Management and CAB meetings to
@@ -29,8 +30,8 @@ Scripting Language as Shell, Python
 
 In my current role at Rakuten, I was responsible for the reliability and performance of 
 a large-scale Trade Investment Baking platform. I was working closely with developers and operations 
-teams to implement SRE and DevOps best practices to the project including setting up and managing 
-large-scale Kubernetes clusters, automate the complex deployment by CI/CD pipelines, handled complex 
+teams to implement SRE and DevOps best practices to the project and setting up and managing 
+large-scale Kubernetes clusters, build and automate the complex deployment by CI/CD pipelines, handled complex 
 cloud migration Test, Pre-prod and Prod environments, handled complex infra provisioning by terraform, 
 Setting up application centric Disaster Recovery, Automating Various tasks using Bash Shell, Python, 
 Maven and Jenkins to monitor infra and applications setted up ELK stack from scratch.
