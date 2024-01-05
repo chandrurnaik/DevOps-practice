@@ -427,3 +427,120 @@ How to do image scan in cicd jenkins pipeline using rapid 7:
        Application performance monitoring: Tracking application performance and identifying performance bottlenecks.
        Business intelligence: Analyzing data to gain insights into business trends and customer behavior.
  
+22. difference between SLO and SLI in SRE 
+    => SLI(service level indicator): An SLI is a measurable metrics that used to track actual performance of services.
+       We usually track how well a services is performaning and always try to meet SLO Goals.
+       => SLI includes metrics like uptime, response time, error rate, latency, resource utilization, and etc..
+       => The primary purpose SLI is to provide data to analysing and monitoring the performance of services.
+    => SLO (service level objective): An SLO is merasurable target for a specific aspect of service that defines desired
+       level reliability and performance for an services aims to achieve. and we set targets as per business 
+       requirements and user needs.
+       => SLO are usually specified in percentage or numbers.
+       => SLO might be 
+          => "maintain 99.9% uptime"
+          => "average response time below 2 seconds."
+          => "No more than 5 minutes of downtime per week"
+          => "95% of requests served within 3 seconds"
+          => "Handle 10,000 requests per second with a success rate of 99.5%"
+
+23. How can we curl in instance resides in private subnet in aws, without nat and internet gateway
+    => It's not possible to directly curl from an instance residing in a private subnet in AWS without a NAT gateway 
+       or an internet gateway, as the instance has no outgoing internet connectivity. Both NAT gateways and internet
+       gateways serve as gateways for instances in private subnets to reach the internet.
+    => However, depending on your specific needs, there are alternative options to achieve internet access from your
+       private instance:
+       => 1. VPC Endpoint: Create a VPC endpoint for the service you want to access (e.g., S3, DynamoDB). 
+       This allows your instance to directly connect to the service within the VPC without needing internet access.
+       This option is secure and efficient, but may not be suitable for all services.
+       => 2. VPN Connection: Set up a VPN connection between your VPC and your on-premises network. This allows 
+       your instance to access the internet through your on-premises connection.
+       Requires configuration on both sides of the VPN tunnel and comes with additional bandwidth charges.
+       => 3. AWS Transit Gateway: If you have multiple VPCs, you can set up a Transit Gateway to centrally manage 
+       routing between VPCs and external networks.
+       This option offers centralized control and scalability, but can be more complex to set up.
+
+24. Terraform loops and all
+    => Terraform loops (count and for_each)    
+    resource "null_resource" "loop_simple" {
+        count = 2 
+    }
+    
+    output "loop_out" {
+        value = null_resource.loop_simple
+    }
+    
+    
+    List count example
+    
+    locals {
+        names = ["bucket1","bucket2","bucket3","bucket4"]
+    }
+    
+    resource "null_resource" "names" {
+        count = length(local.names)
+        triggers = {
+            name = local.names[count.index]
+        }
+    }
+    
+    output "list_out" {
+        value = null_resource.names
+    }
+    
+    
+    List for_each example
+    
+    locals {
+        names = ["bucket1","bucket2","bucket3","bucket4"]
+    }
+    
+    resource "null_resource" "names" {
+        for_each = toset(local.names)
+        triggers = {
+            name = each.value
+        }
+    }
+    
+    output "list_out" {
+        value = null_resource.names
+    }
+    
+    Map for_each example
+    
+    locals {
+        names = { 
+            bucket1 = "region1"
+            bucket2 = "region2"
+            bucket3 = "region3"
+            bucket4 = "region4"
+        }
+    }
+    
+    resoruce "null_resource" "names" {
+        for_each = local.names
+        triggers = {
+            bucket = each.key
+            region = each.value
+        }
+    }
+    
+    output "list_out" {
+        value = null_resource.names
+    }
+
+25. difference between application and network load balancer with use cases
+   => Application Load Balancer (ALB):
+      Operates at Layer 7 (Application Layer): Analyzes the content of incoming requests based on header information
+      like URL, cookies, and path.
+      Smart Routing: Can direct requests to specific servers based on application logic, like sending a 
+      product-specific request to the server holding that product's inventory.
+      Features: Supports health checks, content-based routing, path-based routing, and WebSockets.
+      Use Cases: Ideal for web applications, APIs, dynamic content delivery, and microservices architectures.
+
+   => Network Load Balancer (NLB):
+      Operates at Layer 4 (Transport Layer): Only considers connection information like TCP/UDP ports.
+      Simple Distribution: Distributes traffic evenly across healthy servers without inspecting the application 
+      data.
+      Features: Supports high availability, fault tolerance, and static IP addresses.
+      Use Cases: Best for stateless applications, high-volume traffic streams, real-time applications, and 
+      applications using specialized network protocols.

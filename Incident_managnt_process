@@ -1,0 +1,38 @@
+====== from google bard =======
+1. Incident Identification and Logging:
+Description: Recognizing an incident has occurred and creating a record of it.
+Example: A customer calls the service desk to report an email outage. The service desk agent creates an incident ticket to track the issue.
+(chat gpt)
+Identification: The first step involves detecting or being alerted to an incident. This could be through automated monitoring systems, reports from users, or other means.
+Logging: Once an incident is identified, it's crucial to log all relevant details. This includes the time of occurrence, location, nature of the incident, affected systems, and initial assessment.
+
+3. Incident Categorization & Prioritization:
+Description: Determining the the incident based on its impact and urgency on business operations.
+Assign a priority level to determine the appropriate response time and resources needed.
+Example: The service desk prioritizes the email outage as "High" due to its critical impact on business communications.
+
+4. Incident Assignment:
+Description: Assigning the incident to the appropriate team or individual for resolution.
+Example: The service desk assigns the email outage ticket to a level 2 support technician who specializes in email systems.
+
+5. Investigation and Diagnosis:
+Description: Gathering information and analyzing the root cause of the incident.
+This could involve isolating affected systems, implementing temporary fixes, or deploying backup systems.
+Example: The level 2 technician investigates the email server logs and identifies a hardware failure as the cause of the outage.
+
+6. Incident Resolution:
+Description: Taking actions to resolve the incident and restore normal service.
+Example: The technician replaces the faulty hardware component, and email service is restored.
+
+7. Incident Closure:
+Description: Formally closing the incident ticket after verifying that the issue is resolved and documenting the resolution steps. Notify stakeholders, and ensure proper communication about the resolution.
+Example: The service desk agent verifies with the customer that email is functioning correctly and closes the incident ticket.
+
+8. Post-Incident Review (Optional):
+Description: Analyzing the incident to identify areas for improvement and prevent similar incidents in the future.
+Example: The IT team holds a meeting to discuss the email outage, identify lessons learned, and implement changes to prevent similar incidents.
+
+Example of a Major Incident:
+Scenario: A company's website experiences a major outage, preventing customers from accessing their accounts or placing orders.
+Response: The incident management team would initiate a major incident response plan, involving key stakeholders, establishing communication channels, and working to quickly restore service.
+Post-Incident Review: A thorough review would be conducted to identify the root cause of the outage, implement corrective actions, and improve incident response procedures.
