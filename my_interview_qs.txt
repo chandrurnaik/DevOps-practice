@@ -163,12 +163,12 @@ How to do image scan in cicd jenkins pipeline using rapid 7:
       of major outage 
    => only critical resources are present in DR env and all are of stop state, so to cost optimize it.
    => to implement DR i have done some automation by python script 
-      1. created a backup schedule for every 4hrs (starting from 12AM)
+      1. created a backup schedule for every 4hrs (starting from 12AM) 
       2. copy the backup snapshot from source region to DR region 
-      3. Restoring backup 
+      3. Restoring backup   
       4. cleaning up the old backups every week  
 
-8. 3-Tier Architecture (explain only when its highly required)
+8. 3-Tier Architecture (explain only when its highly required)  
    => 3-tier Architecture app module 
       => frontend (ui)
       => backend 
@@ -544,3 +544,15 @@ How to do image scan in cicd jenkins pipeline using rapid 7:
       Features: Supports high availability, fault tolerance, and static IP addresses.
       Use Cases: Best for stateless applications, high-volume traffic streams, real-time applications, and 
       applications using specialized network protocols.
+
+26. Rakuten trade investment banking platform 
+   => url = rakutentrade.my (Trade investment banking platform)
+   => optional (not imp) => capital.rakuten.com 
+
+27. About Rakuten 
+   => address = Raja Ram Mohan Roy Road, Beside cubbon park, purple line metro 
+   => about = Rakuten is a Japanese multinational company that operates a variety of businesses across e-commerce, 
+      fintech, digital content, communications, and more. In Bangalore, India, Rakuten has established a 
+      significant presence, primarily focusing on software development and technology-related operations.
+   => bangalore office company size = 1700 
+   => Rakuten group has 70+ businesses. 
