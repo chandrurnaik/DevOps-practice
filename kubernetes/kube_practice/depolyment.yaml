@@ -4,11 +4,11 @@ metadata:
   name: ip-app-practice
   labels:
     object: my-ip-app
-spec:
+spec: 
   replicas: 4
   selector:
     matchLabels:
-      app: ip-app
+      app: ip-app         
   template:
     metadata:
       labels:

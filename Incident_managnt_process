@@ -26,7 +26,7 @@ Example: The technician replaces the faulty hardware component, and email servic
 
 7. Incident Closure:
 Description: Formally closing the incident ticket after verifying that the issue is resolved and documenting the resolution steps. Notify stakeholders, and ensure proper communication about the resolution.
-Example: The service desk agent verifies with the customer that email is functioning correctly and closes the incident ticket.
+Example: The service desk agent verifies with the customer that email is functioning correctly and closes the incident ticket. 
 
 8. Post-Incident Review (Optional):
 Description: Analyzing the incident to identify areas for improvement and prevent similar incidents in the future.

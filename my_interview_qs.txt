@@ -556,3 +556,120 @@ How to do image scan in cicd jenkins pipeline using rapid 7:
       significant presence, primarily focusing on software development and technology-related operations.
    => bangalore office company size = 1700 
    => Rakuten group has 70+ businesses. 
+
+28. software versions 
+   => Helm Chart = 3.13.2
+   => kubernetes = 1.23 
+   => docker
+      => 19.03, 20.10, and 22.06 remain widely used for their stability and extended support.
+      => Docker Compose: Version 2.4.1 is the current stable release, ensuring compatibility with recent Docker 
+         Engine versions.
+   => ansible 
+      => Major LTS (Long-Term Support) versions: 2.9 (until Jun 2024), 2.10 (until Jun 2025), 2.11 (until Jun 2026)
+   => jenkins 
+      => Long-Term Support (LTS) versions: 2.33 (until Feb 2025), 2.32 (until Aug 2026), 2.31 (until Feb 2027)
+   => terraform
+      => Current LTS versions include 1.0.12 (until June 2024), 1.1.7 (until June 2025), and 1.2.5 (until July 2026)
+   => prometheus = 2.36 
+   => grafana = 8.5x and 9.0x
+   => ELK stack
+      => Elastic Search = 7.17 (LTS)
+      => Logstash = 7.17.x (LTS)
+      => Kibana = 7.17.x (LTS)
+
+29. your day to day activities
+
+30. how to track no of users accessing your application in kubernetes
+    => Here are some ways you can track the number of users accessing your application in Kubernetes:
+       Resource Usage:
+      => API Server Metrics: Kubernetes API server exposes metrics like the number of requests received and their 
+         types. Monitoring these metrics can give you an idea of the overall traffic to your application.
+      => Prometheus and Grafana: You can configure Prometheus to scrape resource usage metrics from pods and nodes, 
+         including HTTP requests served by your application. Grafana can then be used to visualize these metrics 
+         and track user activity over time.
+      => Application-Specific Tracking:
+         Application Logs: Your application itself can log information about user requests, such as timestamps, 
+         IP addresses, and user IDs. Analyzing these logs can provide detailed insights into user behavior and 
+         interactions.
+         
+      => External Tools:
+         Ingress Controllers: If you use an ingress controller like NGINX Ingress or Istio Gateway, they can provide 
+         statistics about incoming traffic, including the number of connections and requests.
+         Application Performance Monitoring (APM) Tools: Tools like Datadog or Honeycomb can be integrated with your 
+         application to collect detailed performance metrics and user activity tracking data.
+
+31. How you trigger the autoscaling
+    => using cloud watch alaram 
+       => in cloudwatch alaram we configure metrics for specific threshold and select conditions like In Alaram, Ok,
+          Insuficient Data and later we can choose actions like SNS Topic, Ec2 Action, autoscaling Action, and 
+          system manager action, Here we have to choose Autoscaling and whenever a threshold is met automatically
+          Autoscaling
+       => we can have a custom metrics or any event specified and using AWS Lambda Function trigger Autoscaling 
+
+32. After the resources (cpu utilisation) comes below threshold value, we need to manually bring down the extra 
+server or automatically it will be terminated. 
+    => In AWS Autoscaling whenever resources comes below defined threshold, its default behavior of autoscaling to 
+       scale down instances as per the load and eventually it terminates the least utilized instances.
+
+33. Your team size
+    => SRE Team Size: 6 - 8 
+
+34. day to day issues(errors) and troubleshooting as a devops or SRE engineer 
+    => python coding issues: (it's general tasks not an issue)
+       1. main data manupulation issues, like data parshing and all
+       2. writing python scripts to perform any custome cloud operations 
+
+    => service related issue: 
+       1. like some pages not accessible, service may be down need resolve and make server functional 
+       2. servers like: tomcat, jenkins, sonarqube (mainly devops realated tools issues) 
+
+    => Network related issues: (optional don't explain normally)
+       1. like any port is already busy and can't run service on same and need to resolve them 
+
+    => Jenkins Slowness issues:
+       1. it occures when a pipeline job takes more time to execute job or its consuming more resources of slaves 
+          where the job is running 
+       3. resolution: we usually go and add more resources to slaves 
+       2. Troubleshooting: monitor jenkis using grafana and set alerting in prometheus, so if alerted can take neccessary
+          action 
+
+    => Authentication and Authorisation issues:
+       1. as cicd pipeline job is integrated to multiple tools like sonarqube, docker registry, jfrog artifactory,
+          rapid7 scanner its requires authentication to access srevices 
+          => sometimes we faces Authentication issues then need to recheck jenkins credential manager and configuration
+             systems for any misconfigurations 
+
+    => Crashloop Backoff Error in k8s: (main in k8s)
+        - This error usually comes when probe fails.
+        - When the application inside the container is crashing due to some error (Exit 1).
+        - Error while creating or executing docker image (error in docker image only)
+
+    => Imagepull Backoff Error in k8s: (main in k8s)
+        - Docker registry is not accessible 
+        - Docker image image name or tag is incorrect / It may not exists in the registry
+
+    => Run Container Error in k8s:
+        - configmaps and secrets are missing 
+        - volumes are not accessible/avaialable 
+
+    => OOM - OOMKilled, OOMCatch(Out of Memory)     
+        - When pod is requesting resources above its request and limits which are applied.
+        - Memory LEaks in the application only 
+        - In long run containers will start consuming more memory.
+        - Increased traffic or an increase in resource-intensive jobs/workloads 
+        - more unwanted replicas of pods 
+
+    => Internal Server Error: 
+        - we get errors like 501, 502, 503 server error 
+        - usually like serever is down we get this error 
+        - usually by restarting serever solve this issue in most of the times 
+        - but if it's a real error then need to check k8s pod log and take action as per to it 
+
+    => Docker Issues: 
+       - like authentication error, not able to access docker registry to pull and push images 
+       - docker deamon is not responding, neet to restart the service 
+    
+    => Integration Error:
+       - In jenkins to implement cicd we usually integrate with multiple tools 
+       - we sometimes faced these errors like when a inegration not properly done 
+   

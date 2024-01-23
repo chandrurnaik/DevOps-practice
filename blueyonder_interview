@@ -1,0 +1,29 @@
+Company : Blueyonder
+Duration : 30mins 
+Interview questions: 
+1. Explain kubernetes architecture. 
+2. What are the common errors in kubernetes.
+3. Deployment strategies you aware n explain blue green deployment strategy.
+4. Have you written Jenkins pipeline job. 
+5. Other tools that you used rather than Jenkins for CI/CD.  
+6. Explain roles in ansible. 
+7. How you configure machines using ansible.
+8. Advantages of microsservice architecture.
+9. Have you right any scripts for resources creation in AWS using terraform.
+10. Can you work with GCP or restricted to AWS only.
+11. Explain about your project.
+12. Your team size. 
+13. Day to day activities. 
+
+
+Company : Blueyonder 
+Duration : 35min 
+Interview questions: 
+1. How many kubernetes cluster you r maintaing. 
+2. How you track the no of user accessing your application. 
+3. How you trigger the autoscaling. 
+4. After the resources (cpu utilisation) comes below threshold value, we need to manually bring down the extra server or automatically it will be terminated. 
+5. Explain CI/CD. 
+6. What are challenges faced you faced in your company. 
+7. How to acces the k8s cluster from your laptop.         
+8. How you will bring the new changes in your company.  
